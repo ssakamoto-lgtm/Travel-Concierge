@@ -2,9 +2,12 @@ import streamlit as st
 from google import genai
 import os  #
 # --- 設定 ---
-client = genai.Client(
-    api_key=os.getenv("GOOGLE_API_KEY")
-)
+api_key = os.getenv("GOOGLE_API_KEY")
+
+if not api_key:
+    st.error("APIキーが設定されていません（Secretsを確認してください）")
+    st.stop()
+client = genai.Client(api_key=api_key)
 
 # --- UI ---
 st.set_page_config(page_title="Travel Concierge", page_icon="✈️")
