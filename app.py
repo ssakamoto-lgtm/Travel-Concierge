@@ -1,9 +1,10 @@
 import streamlit as st
 from google import genai
-
+import os  #
 # --- 設定 ---
-API_KEY = "AIzaSyA2t5WH36yHYkyCuJFZuHGDCJKS8PgM8aQ" 
-client = genai.Client(api_key=API_KEY)
+client = genai.Client(
+    api_key=os.getenv("GOOGLE_API_KEY")
+)
 
 # --- UI ---
 st.set_page_config(page_title="Travel Concierge", page_icon="✈️")
